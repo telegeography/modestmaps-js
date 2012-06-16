@@ -1,0 +1,95 @@
+---
+layout: 'default'
+---
+
+<div class='limiter clearfix relative'>
+  <div class='content'>
+    <div class='content-main'>
+      <div class='content-header clearfix'>
+        <a href='{{site.baseurl}}/{{page.url}}' class='result'>
+          <h4 class='code title'>{{page.title}}</h4>
+          <em class='description'>{{page.description}}</em>
+          <small class='tags'>
+            {% for tag in page.tags %}
+              {{tag}}{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          </small>
+        </a>
+        <div class='details'>
+          <div>
+            <h6 class='label'>Tools Required</h6>
+            {% for tool in page.tools %}
+              {{tool}}{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          </div>
+          <div>
+            <h6 class='label'>Modest Maps Version</h6>
+            {{page.version}}
+          </div>
+        </div>
+      </div>
+
+      <!--Gist preview-->
+      <iframe class='preview' src='http://bl.ocks.org/d/{{page.gist}}/' frameborder='0'></iframe>
+      <div id='markdown'></div>
+      <div id='html'></div>
+      <div id='code-examples'></div>
+
+<script type='text/template' id='markdown-snippets'>
+<%= content %>
+</script>
+
+      <script type='text/template' id='html-snippets'>
+        <div class='snippet'>
+          <div class='heading'>
+            <h5 id='<%= id %>' class='filename'><%= filename %></h5>
+          </div>
+          <pre class='prettyprint'><%- content %></pre>
+        </div>
+      </script>
+      <script type='text/template' id='snippets'>
+        <div class='snippet'>
+          <div class='heading'>
+            <h5 id='<%= id %>' class='filename'><%= filename %></h5>
+          </div>
+          <pre class='prettyprint'><%- content %></pre>
+        </div>
+      </script>
+    </div>
+  </div>
+  <div class='sidebar'>
+    <div class='sidebar-inner'>
+      <div class='block'>
+        <h6>Files used</h6>
+        <script type='text/template' id='markdown-listing'>
+          <li><a href='#' class='top'><%= filename %></a></li>
+        </script>
+        <script type='text/template' id='html-listing'>
+          <li><a href='#<%= id %>'><%= filename %></a></li>
+        </script>
+        <script type='text/template' id='rest-listing'>
+          <li><a href='#<%= id %>'><%= filename %></a></li>
+        </script>
+        <div id='toc'>
+          <ul id='markdown-toc'></ul>
+          <ul id='html-toc'></ul>
+          <ul id='rest-toc'></ul>
+        </div>
+      </div>
+      <div class='use'>
+        To use this example we encourage you to fork the code from <a href='https://gist.github.com'>gist.github.com</a> and customize it for your own needs.
+        <a target='_blank' class='button color' href='https://gist.github.com/gists/{{page.gist}}'>Fork this example<span class='icon octocat'>&nbsp;</span></a>
+      </div>
+      <a class='button' href='https://gist.github.com/gists/{{page.gist}}/download'>Download source code</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function() {
+    var gist = {{page.gist}};
+    var e = new Docs();
+    $(e.getGist(gist));
+    $(e.fixedSidebar());
+  });
+</script>

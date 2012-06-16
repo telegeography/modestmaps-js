@@ -83,7 +83,7 @@ p {
   }
   p.paragraph {
     border-top: 1px solid #ddd;
-    padding: 10px 0;
+    padding: 15px 0 5px;
     margin: 10px 0;
     color: #808080;
     }

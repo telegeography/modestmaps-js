@@ -1,5 +1,5 @@
 /*!
- * Modest Maps JS v3.3.1
+ * Modest Maps JS v3.3.2
  * http://modestmaps.com/
  *
  * Copyright (c) 2011 Stamen Design, All Rights Reserved.
@@ -1603,9 +1603,9 @@ var MM = com.modestmaps = {
             if (!this._tileError) {
                 var theLayer = this;
                 this._tileError = function(manager, tile) {
-                    tile.src = theLayer.emptyImage;
-                    theLayer.tiles[tile.id] = tile;
-                    theLayer.positionTile(tile);
+                    tile.element.src = theLayer.emptyImage;
+                    theLayer.tiles[tile.element.id] = tile.element;
+                    theLayer.positionTile(tile.element);
                 };
             }
             return this._tileError;

@@ -39,9 +39,9 @@
             if (!this._tileError) {
                 var theLayer = this;
                 this._tileError = function(manager, tile) {
-                    tile.src = theLayer.emptyImage;
-                    theLayer.tiles[tile.id] = tile;
-                    theLayer.positionTile(tile);
+                    tile.element.src = theLayer.emptyImage;
+                    theLayer.tiles[tile.element.id] = tile.element;
+                    theLayer.positionTile(tile.element);
                 };
             }
             return this._tileError;

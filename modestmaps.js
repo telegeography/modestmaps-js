@@ -1585,7 +1585,6 @@ var MM = com.modestmaps = {
         levels: null,
         requestManager: null,
         provider: null,
-        emptyImage: 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=',
         _tileComplete: null,
 
         getTileComplete: function() {
@@ -1603,7 +1602,7 @@ var MM = com.modestmaps = {
             if (!this._tileError) {
                 var theLayer = this;
                 this._tileError = function(manager, tile) {
-                    tile.element.src = theLayer.emptyImage;
+                    tile.element.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
                     theLayer.tiles[tile.element.id] = tile.element;
                     theLayer.positionTile(tile.element);
                 };
@@ -1979,7 +1978,6 @@ var MM = com.modestmaps = {
             this.requestManager.clear();
             this.parent.style.display = 'none';
         },
-
 
         // Remove this layer from the DOM, cancel all of its requests
         // and unbind any callbacks that are bound to it.

@@ -226,11 +226,11 @@
                         // really stops loading
                         // FIXME: we'll never retry because this id is still
                         // in requestsById - is that right?
+                        img.src = null;
                         theManager.dispatchCallback('requesterror', {
                             element: img,
                             url: ('' + img.src)
                         });
-                        img.src = null;
                     }
 
                     // keep going in the same order

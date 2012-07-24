@@ -38,7 +38,7 @@
             if (!this._tileError) {
                 var theLayer = this;
                 this._tileError = function(manager, tile) {
-                    tile.element.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                    tile.element = document.createElement('div');
                     theLayer.tiles[tile.element.id] = tile.element;
                     theLayer.positionTile(tile.element);
                 };

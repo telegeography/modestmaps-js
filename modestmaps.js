@@ -1543,11 +1543,11 @@ var MM = com.modestmaps = {
                         // really stops loading
                         // FIXME: we'll never retry because this id is still
                         // in requestsById - is that right?
+                        img.src = null;
                         theManager.dispatchCallback('requesterror', {
                             element: img,
                             url: ('' + img.src)
                         });
-                        img.src = null;
                     }
 
                     // keep going in the same order
@@ -1602,7 +1602,7 @@ var MM = com.modestmaps = {
             if (!this._tileError) {
                 var theLayer = this;
                 this._tileError = function(manager, tile) {
-                    tile.element.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+                    tile.element = document.createElement('div');
                     theLayer.tiles[tile.element.id] = tile.element;
                     theLayer.positionTile(tile.element);
                 };
